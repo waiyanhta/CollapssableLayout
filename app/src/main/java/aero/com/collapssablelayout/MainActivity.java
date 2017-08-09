@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import aero.com.collapssablelayout.Adapter.RecyclerAdapter;
 
 public class MainActivity extends AppCompatActivity {
-private ArrayList<String> stringArrayList;
+private ArrayList<Model> stringArrayList;
     private RecyclerView recyclerView;
     private RecyclerAdapter recyclerAdapter;
     @Override
@@ -40,7 +40,10 @@ private ArrayList<String> stringArrayList;
         stringArrayList = new ArrayList<>();
 
         for (int i = 0; i < 100; i++) {
-            stringArrayList.add("Item " + (i + 1));
+            Model model=new Model();
+            model.setSn(i);
+            model.setString("Item");
+            stringArrayList.add(model);
         }
     }
 

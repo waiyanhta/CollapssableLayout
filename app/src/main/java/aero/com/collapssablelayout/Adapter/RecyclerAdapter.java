@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import aero.com.collapssablelayout.Model;
 import aero.com.collapssablelayout.R;
 
 /**
@@ -17,10 +18,10 @@ import aero.com.collapssablelayout.R;
  */
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>{
-private ArrayList<String> stringArrayList;
+private ArrayList<Model> stringArrayList;
     private Context mContext;
 
-    public RecyclerAdapter(ArrayList<String> stringArrayList, Context mContext) {
+    public RecyclerAdapter(ArrayList<Model> stringArrayList, Context mContext) {
         this.stringArrayList = stringArrayList;
         this.mContext = mContext;
     }
@@ -33,8 +34,10 @@ private ArrayList<String> stringArrayList;
 
     @Override
     public void onBindViewHolder(RecyclerAdapter.MyViewHolder holder, int position) {
-holder.title.setText(stringArrayList.get(position));
-        if(position%2==0)
+        Model model=stringArrayList.get(position);
+        holder.setIsRecyclable(false);
+        holder.title.setText(model.getString()+" "+model.getSn());
+        if(model.getSn()%2==0)
             holder.title.setTextColor(Color.BLUE);
     }
 
